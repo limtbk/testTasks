@@ -25,11 +25,18 @@ class ViewController: UIViewController {
         
         guard let index = self.view.subviews.firstIndex(of: view) else { return result }
         if index - 1 >= 0 {
-            for i in 0...index - 1 {
+            for i in (0...index - 1).reversed() {
                 let tview = self.view.subviews[i]
+                
                 if views.contains(tview) && !viewsInUse.contains(tview) {
                     if view.frame.intersects(tview.frame) {
                         result.append(tview)
+                    } else {
+                        for v in result {
+                            if v.frame.intersects(tview.frame) {
+                                result.append(tview)
+                            }
+                        }
                     }
                 }
             }
