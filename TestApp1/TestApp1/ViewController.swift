@@ -60,9 +60,6 @@ class ViewController: UIViewController {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("\n")
-        print(touches)
-
         for touch in touches {
             if let viewArray = viewDict[touch] {
                 for view in viewArray {
